@@ -1,0 +1,13 @@
+Project name and description: Differences in javascript(array) and python(lists)
+
+Installation instructions:
+#python
+To run pyhton, you need python install in your machine
+to run the code python3 filename
+#javascript
+To run javascript, you need node install in your machine
+to run the code node filename
+
+#Differences
+
+1. In python list, we can access item with negative indexes, whereas in javascript we cannnot.
