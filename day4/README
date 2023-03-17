@@ -2,11 +2,12 @@ Project name and description: Differences in javascript(array) and python(lists)
 
 Installation instructions:
 #python
-To run pyhton, you need python install in your machine
-to run the code python3 filename
+1.To run pyhton, you need python install in your machine
+2.to run the code python3 filename
 #javascript
-To run javascript, you need node install in your machine
-to run the code node filename
+1.To run javascript, you need node install in your machine
+2.then npm install to install the dependencies, as i have used readlineSync module to read the user input from the console.
+3.to run the code `node filename`
 
 #Differences
 
