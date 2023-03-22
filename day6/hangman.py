@@ -1,10 +1,4 @@
-#start the game
-#hold count of life
-#generate the ramdom word
-
-#check of the input is in the generated random word
- #if yes, fill the gap
- #else decrease the life
+import os
 import random
 print(''' _                                             
 | |                                            
@@ -14,9 +8,10 @@ print(''' _
 |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
                     __/ |                      
                    |___/     ''')
-totallife=5
-word_lists=words = ['Apple', 'Angel', 'Beach', 'Brown', 'Basic', 'Bread', 'Camera', 'Circle', 'Candle', 'Cherry','Coffee', 'Dance', 'Donut', 'Dress', 'Earth', 'Email', 'Energy', 'Fruit', 'Flower', 'Forest', 'Garden', 'Guitar', 'Honey', 'Happy', 'Heart', 'Hotel', 'Island', 'Ivory', 'Jungle', 'Jacket','Laptop', 'Lemon', 'Lounge', 'Market', 'Museum', 'Nature', 'Orange', 'Office', 'Pencil', 'Piano','Purple', 'Rocket', 'School', 'Season', 'Square', 'Summer', 'Temple', 'Tomato', 'Travel', 'Winter','Absolute', 'Apartment', 'Beautiful', 'Cinnamon', 'Delicate', 'Ecosystem', 'Fascinate', 'Gorgeous', 'Happiness', 'Incredible','Jubilant', 'Knowledge', 'Lavender', 'Magnific', 'Necessary', 'Obsessed', 'Pleasant', 'Quarrelsome', 'Rational', 'Satisfaction','Terrific', 'Understand', 'Victorious', 'Wonderful', 'Xylophone', 'Yesterday', 'Zealous']
+from hangman_art import stages
+from hangman_lists import word_lists
 
+totallife=6
 #picking the random word from the lists
 random_word=random.choice(word_lists).lower()
 word_len=len(random_word)
@@ -27,19 +22,43 @@ for _ in range(0,word_len):
    guess_space.append("_")
 print(f"the guess word is {random_word}")
 end_of_game=False
+wrong_guess=[]
 while not end_of_game:
     user_guess=input("please give a letter? ").lower()
+    os.system('clear')
     #important part in the whole code
+    #to keep track of the user input word
+   
+   
+    if user_guess in guess_space:
+        print(f"The letter you choose is {user_guess} which you entered before, please give a new letter")
+  
     for position in range(0,word_len):
-        #getting the letter in the position at the time of looop.
-        letter=random_word[position]
-        #check
-        if letter==user_guess:
-            guess_space[position]=letter
+            #getting the letter in the position at the time of looop.
+            letter=random_word[position]
+          
+            #check
+            if letter==user_guess:
+                guess_space[position]=letter
+    if user_guess not in random_word:
+        if user_guess not in wrong_guess:
+            wrong_guess.append(user_guess)
+            totallife-=1
+            print(f"The letter you choose is {user_guess}. This letter is not in the word, so your remaining life is {totallife} ")
+            print(stages[totallife])     
+        else:
+            print(f"The letter you choose is {user_guess}. This letter has been choosen before and its wrong.")
+            print(stages[totallife])
+
+        
+    if totallife==0:
+        print("you lose")
+        end_of_game=True
+            
     if "_" not in guess_space:
         print("you won")
         end_of_game=True
-
+    print(guess_space)
    
 
          
